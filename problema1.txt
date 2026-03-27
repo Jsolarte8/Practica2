@@ -1,0 +1,29 @@
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  if (Serial.available() > 0) {
+
+    int dinero = Serial.parseInt();
+
+    int b[] = {50000,20000,10000,5000,2000,1000,500,200,100,50};
+
+    for(int i=0; i<10; i++){
+      int c = dinero / b[i];
+
+      Serial.print(b[i]);
+      Serial.print(" : ");
+      Serial.println(c);
+
+      dinero = dinero % b[i];
+    }
+
+    Serial.print("Faltante: ");
+    Serial.println(dinero);
+
+    Serial.println("----------------");
+
+  }
+}
